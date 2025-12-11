@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carregando exercício...</title>
+</head>
+
+<body>
+  <h1 id="nome"></h1>
+  <img id="gif" width="300" />
+  <p id="execucao"></p>
+
+  <script>
+    // Captura o nome do exercício da URL
+    const nome = location.pathname.split("/").pop();
+
+    // ID DA SUA PLANILHA PÚBLICA — vamos substituir depois
+    const SHEET_ID = "AQUI_VAI_O_ID_DA_PLANILHA";
+
+    const url =
+      `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
+
+    fetch(url)
+      .then(r => r.text())
+      .then(text => {
+        const json = JSON.parse(text.substring(47, text.length - 2));
+        const rows = json.table.rows.map(r => r);
+
+        // Procura pelo exercício usando o slug da URL
+        const exercicio = rows.find(r =>
+          r.c[0].v.toLowerCase().replace(/ /g, "-") === nome
+        );
+
+        if (!exercicio) {
+          document.body.innerHTML = "<h2>Exercício não encontrado</h2>";
+          return;
+        }
+
+        document.title = exercicio.c[0].v;
+        document.getElementById("nome").textContent = exercicio.c[0].v;
+        document.getElementById("execucao").textContent = exercicio.c[1].v;
+        document.getElementById("gif").src = exercicio.c[4].v; // coluna do GIF
+      });
+  </script>
+</body>
+
+</html>
