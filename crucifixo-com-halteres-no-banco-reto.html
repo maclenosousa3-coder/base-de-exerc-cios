@@ -12,39 +12,57 @@
       margin: 0;
       padding: 20px;
     }
+
     .container {
       max-width: 800px;
       margin: 0 auto;
       text-align: center;
     }
-    video {
-      width: 100%;
-      max-width: 600px;
-      height: auto;
-      margin-bottom: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    }
+
     h1 {
       font-size: 2em;
       margin-bottom: 20px;
     }
+
     p {
       font-size: 1.1em;
       line-height: 1.6em;
       text-align: justify;
+    }
+
+    .video-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #00b894;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+      font-weight: bold;
+    }
+
+    .video-button:hover {
+      background-color: #019870;
+    }
+
+    #videoContainer {
+      display: none; /* esconde o vídeo até o botão ser clicado */
+      margin-top: 20px;
+    }
+
+    video {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Crucifixo com Halteres no Banco Reto</h1>
-
-    <!-- Vídeo MP4 do Drive incorporado -->
-    <video controls autoplay loop muted>
-      <source src="https://drive.google.com/uc?export=download&id=1WjRcHehMcodWPyEI2MDO82b4d6coumA4" type="video/mp4">
-      Seu navegador não suporta vídeo.
-    </video>
 
     <!-- Descrição do exercício -->
     <p>
@@ -53,6 +71,28 @@
       Respiração: inspire ao descer, expire ao subir.<br><br>
       <strong>Músculo alvo:</strong> peito
     </p>
+
+    <!-- Botão para abrir o vídeo -->
+    <a href="#" class="video-button" onclick="mostrarVideo()">Abrir Vídeo/GIF</a>
+
+    <!-- Container do vídeo (escondido até clicar no botão) -->
+    <div id="videoContainer">
+      <video controls autoplay loop muted>
+        <source src="https://drive.google.com/uc?export=download&id=1WjRcHehMcodWPyEI2MDO82b4d6coumA4" type="video/mp4">
+        Seu navegador não suporta vídeo.
+      </video>
+    </div>
   </div>
+
+  <script>
+    function mostrarVideo() {
+      const container = document.getElementById('videoContainer');
+      if(container.style.display === "none") {
+        container.style.display = "block";
+      } else {
+        container.style.display = "none";
+      }
+    }
+  </script>
 </body>
 </html>
