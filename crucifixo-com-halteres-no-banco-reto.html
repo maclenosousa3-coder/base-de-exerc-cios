@@ -30,32 +30,32 @@
       text-align: justify;
     }
 
-    .video-button {
+    .video-container {
+      margin: 20px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+    }
+
+    .video-link {
       display: inline-block;
-      margin-top: 20px;
+      margin-top: 15px;
       padding: 10px 20px;
       background-color: #00b894;
       color: #ffffff;
       text-decoration: none;
       border-radius: 8px;
-      cursor: pointer;
       transition: background-color 0.3s;
     }
 
-    .video-button:hover {
+    .video-link:hover {
       background-color: #019870;
-    }
-
-    #videoContainer {
-      display: none;
-      margin-top: 20px;
-    }
-
-    video {
-      width: 100%;
-      max-width: 600px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
     }
   </style>
 </head>
@@ -63,6 +63,12 @@
   <div class="container">
     <h1>Crucifixo com Halteres no Banco Reto</h1>
 
+    <!-- GIF/Vídeo incorporado do Drive -->
+    <div class="video-container">
+      <iframe src="https://drive.google.com/file/d/1WjRcHehMcodWPyEI2MDO82b4d6coumA4/preview" allow="autoplay"></iframe>
+    </div>
+
+    <!-- Descrição do exercício -->
     <p>
       Deite-se no banco reto com os pés firmes no chão, segure um halter em cada mão e leve os halteres juntos acima do peito com leve dobra nos cotovelos (pegada neutra, palmas uma para a outra). A partir daí, desça os halteres em um arco amplo para os lados, sentindo o alongamento dos peitorais até que os halteres fiquem aproximadamente na linha do peito ou um pouco abaixo (não precisa chegar paralelos ao chão se isso criar desconforto nos ombros).<br><br>
       Mantenha a pequena flexão do cotovelo constante; conduza o retorno juntando os halteres acima do peito com controle, comprimindo os peitorais no topo.<br><br>
@@ -70,24 +76,10 @@
       <strong>Músculo alvo:</strong> peito
     </p>
 
-    <!-- Botão para abrir o vídeo -->
-    <a class="video-button" onclick="mostrarVideo()">Abrir Vídeo/GIF</a>
-
-    <!-- Container do vídeo, inicialmente escondido -->
-    <div id="videoContainer">
-      <video controls>
-        <source src="https://drive.google.com/uc?export=download&id=1WjRcHehMcodWPyEI2MDO82b4d6coumA4" type="video/mp4">
-        Seu navegador não suporta vídeo.
-      </video>
-    </div>
+    <!-- Botão opcional para abrir no Drive -->
+    <a class="video-link" href="https://drive.google.com/file/d/1WjRcHehMcodWPyEI2MDO82b4d6coumA4/view?usp=sharing" target="_blank">
+      Abrir Vídeo/GIF no Drive
+    </a>
   </div>
-
-  <script>
-    function mostrarVideo() {
-      const container = document.getElementById('videoContainer');
-      container.style.display = 'block';
-      window.scrollTo({ top: container.offsetTop, behavior: 'smooth' });
-    }
-  </script>
 </body>
 </html>
